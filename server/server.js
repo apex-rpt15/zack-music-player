@@ -4,21 +4,50 @@ var Users = require('../db.js');
 var userGenerator = require('./userGenerator.js');
 var AWS = require('aws-sdk');
 var path = require('path');
+var request = require('request');
 
 app.use('/', express.static(path.resolve(__dirname, './../public/dist')));
 
-// Below function used to populate 100 records with one Post Request to /users
-app.post('/users', (req, res) => {
-  var records = 0;
-  setInterval(() => { // had to delay 4s -> to generate unique imgs from the img gallery api
-    userGenerator();
-    records++;
-    if (records > 100) {
-      clearInterval();
-      res.send('Finished');
-    }
-  }, 4000);
+app.get('/users', (req, res) => {
+  Users.find()
+    .then((results) => {
+      res.send(results)
+    });
 });
+
+app.get('/mainTrack', (req, res) => { // from Alastair's data
+  request('http://localhost:3001/tracks/:artist/:track', (err, result) => {
+    var data = { artist: req.params.artist,
+                 track: req.params.track,
+                 songfile: result.cdn_url,
+                 image: result.FILL_ME_IN        // TODO
+               };
+    res.send(data);
+  });
+});
+
+app.get('/related', (req, res) => { // from Abraham's data
+  request('http://localhost:3003/related-tracks', (err, result) => {
+    var data = { related1: {}, // songName // (songImg) TODO
+                 related2: {}, // songName // (songImg) TODO
+                 related3: {}  // songName // (songImg) TODO
+               };
+    res.send(data);
+  });
+});
+
+// Below function used to populate 100 records with one Post Request to /users
+// app.post('/users', (req, res) => {
+//   var records = 0;
+//   setInterval(() => { // had to delay 4s -> to generate unique imgs from the img gallery api
+//     userGenerator();
+//     records++;
+//     if (records > 100) {
+//       clearInterval();
+//       res.send('Finished');
+//     }
+//   }, 4000);
+// });
 
 // Below funciton used to post MongoDB data to AWS S3
 // app.post('/aws', (req, res) => {
