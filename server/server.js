@@ -9,7 +9,7 @@ var request = require('request');
 app.use('/', express.static(path.resolve(__dirname, './../public/dist')));
 
 app.get('/users', (req, res) => {
-  Users.find()
+  Users.find().limit(100)
     .then((results) => {
       res.send(results)
     });
