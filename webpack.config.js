@@ -1,7 +1,8 @@
 var path = require('path');
+// var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry:  {
+  entry: {
     app: path.resolve(__dirname, './client/index.js')
   },
   module: {
@@ -10,9 +11,50 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
-      },
+      }, {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              disable: true
+            }
+          }
+        ]
+      }, {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true
+            }
+
+            //   loader: ExtractTextPlugin.extract(
+            //     'style-loader',
+            //     combineLoaders([
+            //       {
+            //         loader: 'css-loader',
+            //         query: {
+            //           modules: true,
+            //           localIdentName: '[name]__[local]___[hash:base64:5]'
+            //         }
+            //       }
+            //     ])
+            // )
+          }
+        ]
+      }
     ]
   },
+  // plugins: [
+  //   new ExtractTextPlugin('style.css')
+  // ],
   mode: 'development',
   output: {
     filename: 'bundle.js',

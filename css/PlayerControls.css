@@ -1,0 +1,81 @@
+.background {
+  zoom: 225%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: rgb(252, 252, 252);
+  border: 1px solid black;
+  padding: 4px 11px;
+}
+
+.back {
+  width: 0;
+  height: 0;
+  border-top: 2.2px solid transparent;
+  border-bottom: 2.2px solid transparent;
+  border-right: 3.5px solid rgb(40, 40, 40);
+}
+
+.bLine {
+  height: 4.5px;
+  width: 0.98px;
+  background-color: rgb(40, 40, 40);
+  margin-right: -0.2px;
+}
+
+.pauseBar {
+  height: 4.5px;
+  width: 1.5px;
+  background-color: rgb(40, 40, 40);
+}
+
+.pauseSpace {
+  height: 4.5px;
+  width: 1.5px;
+}
+
+.pauseBox {
+  margin: 0.1px -0.3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* background: rgb(252, 252, 252); */
+}
+
+.space {
+  width: 10px
+}
+
+.forward {
+  width: 0;
+  height: 0;
+  border-top: 2.2px solid transparent;
+  border-bottom: 2.2px solid transparent;
+  border-left: 3.5px solid rgb(40, 40, 40);
+}
+
+.play {
+  composes: forward;
+  border-top: 2.4px solid transparent;
+  border-bottom: 2.4px solid transparent;
+  border-left: 3.8px solid rgb(40, 40, 40);
+}
+
+.fLine {
+  height: 4.5px;
+  width: 0.98px;
+  background-color: rgb(40, 40, 40);
+  margin-left: -0.1px;
+}
+
+.shuffle {
+  position: relative;
+  top: -38px;
+  zoom: 24%;
+}
+
+.loop {
+  position: relative;
+  top: -77px;
+  zoom: 11%;
+}
