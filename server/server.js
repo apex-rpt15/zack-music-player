@@ -8,8 +8,8 @@ var request = require('request');
 
 app.use('/', express.static(path.resolve(__dirname, './../public/dist')));
 
-app.get('/users', (req, res) => {
-  Users.find().limit(100)
+app.get('/users/:username', (req, res) => {
+  Users.find({username: req.params.username}).limit(1)
     .then((results) => {
       res.send(results)
     });
