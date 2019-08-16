@@ -8,30 +8,49 @@ var request = require('request');
 
 app.use('/', express.static(path.resolve(__dirname, './../public/dist')));
 
-app.get('/users/:username', (req, res) => {
-  Users.find({username: req.params.username}).limit(1)
+app.get('/user*/:username', (req, res) => {
+  Users.find({ username: req.params.username }).limit(1)
     .then((results) => {
-      res.send(results)
+      if (results.length) {
+        res.send(results);
+      } else {
+        res.send('That username is not in the database, please try again. OR ... to see all users go to "localhost:3004/users"');
+      }
     });
+});
+
+app.get('/user*', (req, res) => {
+  Users.find().limit(100)
+    .then((results) => {
+      res.send(results);
+    });
+});
+
+app.get('/*', (req, res) => {
+  console.log('REQ', req.url)
+  var string = req.url + ' is not a valid endpoint for localhost:3004 ... A specific user is accessed by going to: "localhost:3004/users/[username]" where [username] is the name of the user ... OR all users are accessed at "/users"';
+  res.send(string);
 });
 
 app.get('/mainTrack', (req, res) => { // from Alastair's data
   request('http://localhost:3001/tracks/:artist/:track', (err, result) => {
-    var data = { artist: req.params.artist,
-                 track: req.params.track,
-                 songfile: result.cdn_url,
-                 image: result.FILL_ME_IN        // TODO
-               };
+    var data = {
+      artist: req.params.artist,
+      track: req.params.track,
+      songfile: result.cdn_url,
+      image: result.FILL_ME_IN        // TODO
+    };
     res.send(data);
   });
 });
 
 app.get('/related', (req, res) => { // from Abraham's data
   request('http://localhost:3003/related-tracks', (err, result) => {
-    var data = { related1: {}, // songName // (songImg) TODO
-                 related2: {}, // songName // (songImg) TODO
-                 related3: {}  // songName // (songImg) TODO
-               };
+    var data = {
+      related1: {}, // songName // (songImg) TODO
+      related2: {}, // songName // (songImg) TODO
+      related3: {}  // songName // (songImg) TODO
+    };
     res.send(data);
   });
 });
