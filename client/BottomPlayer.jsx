@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styles from '../css/PlayerControls.css';
+import SongClock from './SongClock.jsx'
+import styles from '../css/BottomPlayer.css';
 import shuffle from '../images/shuffle.png';
 import shuffleOn from '../images/shuffleOn.png';
 import loop from '../images/loop.png';
@@ -12,13 +13,45 @@ class BottomPlayer extends Component {
     this.state = {
       play: false,
       shuffle: false,
-      loop: 0
+      loop: 0,
+      currentTime: '0:00',
+      endTime: '5:00',
+      percentage: 20
     };
   }
 
   clickPlay() {
     this.setState({
       play: !this.state.play
+    });
+  }
+
+  changePercent(e) {
+    var pointX = e.pageX;
+    console.log(pointX);
+    var eLeft = e.target.offsetLeft;
+    console.log('eLeft:', eLeft);
+  }
+
+  calculatePlayBar() {
+    var minCur = this.state.currentTime.slice(0, 1);
+    var secCur = this.state.currentTime.slice(2, 4);
+    var minEnd = this.state.endTime.slice(0, 1);
+    var secEnd = this.state.endTime.slice(2, 4);
+    var totalSecCur = Number(minCur) * 60 + Number(secCur);
+    var totalSecEnd = Number(minEnd) * 60 + Number(secEnd);
+    var decimal = JSON.stringify(totalSecCur / totalSecEnd);
+    if (decimal.length > 4) {
+      var percent = decimal.slice(2, 3) + decimal.slice(3, 4) + '.' + decimal.slice(4, 5);
+    } else if (decimal.length > 3) {
+      var percent = decimal.slice(2, 3) + decimal.slice(3, 4);
+    } else if (decimal.length > 2) {
+      var percent = decimal.slice(2, 3) + '0';
+    } else {
+      var percent = decimal.slice(0, 1);
+    }
+    this.setState({
+      percentage: Number(percent)
     });
   }
 
@@ -48,7 +81,7 @@ class BottomPlayer extends Component {
         <div className={styles.space}></div>
         {
           this.state.play
-            ? <div className={styles.pauseBox}>
+          ? <div className={styles.pauseBox}>
               <a href={noload} onClick={this.clickPlay.bind(this)}><div className={styles.pauseBar}></div></a>
               <a href={noload} onClick={this.clickPlay.bind(this)}><div className={styles.pauseSpace}></div></a>
               <a href={noload} onClick={this.clickPlay.bind(this)}><div className={styles.pauseBar}></div></a>
@@ -61,17 +94,20 @@ class BottomPlayer extends Component {
         <div className={styles.space}></div>
         {
           this.state.shuffle
-            ? <a href={noload} onClick={this.clickShuffle.bind(this)}><img src={shuffleOn} alt="Shuffle" className={styles.shuffle}></img></a>
-            : <a href={noload} onClick={this.clickShuffle.bind(this)}><img src={shuffle} alt="Shuffle" className={styles.shuffle}></img></a>
+          ? <a href={noload} onClick={this.clickShuffle.bind(this)}><img src={shuffleOn} alt="Shuffle" className={styles.shuffle}></img></a>
+          : <a href={noload} onClick={this.clickShuffle.bind(this)}><img src={shuffle} alt="Shuffle" className={styles.shuffle}></img></a>
         }
         <div className={styles.space}></div>
         {
           this.state.loop
-            ? (this.state.loop === 1
-              ? <a href={noload} onClick={this.clickLoop.bind(this)}><img src={loop1On} alt="Loop1On" className={styles.loop}></img></a>
-              : <a href={noload} onClick={this.clickLoop.bind(this)}><img src={loopOn} alt="LoopOn" className={styles.loop}></img></a>)
+          ? (this.state.loop === 1
+            ? <a href={noload} onClick={this.clickLoop.bind(this)}><img src={loop1On} alt="Loop1On" className={styles.loop}></img></a>
+            : <a href={noload} onClick={this.clickLoop.bind(this)}><img src={loopOn} alt="LoopOn" className={styles.loop}></img></a>)
             : <a href={noload} onClick={this.clickLoop.bind(this)}><img src={loop} alt="LoopOff" className={styles.loop}></img></a>
         }
+        <div className={styles.space}></div>
+        <div className={styles.space}></div>
+        <SongClock currentTime={this.state.currentTime} endTime={this.state.endTime} percent={this.state.percentage} changePercent={this.changePercent.bind(this)} />
       </div>
     );
   }

@@ -56,17 +56,17 @@ app.get('/related', (req, res) => { // from Abraham's data
 });
 
 // Below function used to populate 100 records with one Post Request to /users
-// app.post('/users', (req, res) => {
-//   var records = 0;
-//   setInterval(() => { // had to delay 4s -> to generate unique imgs from the img gallery api
-//     userGenerator();
-//     records++;
-//     if (records > 100) {
-//       clearInterval();
-//       res.send('Finished');
-//     }
-//   }, 4000);
-// });
+app.post('/users', (req, res) => {
+  var records = 0;
+  setInterval(() => { // had to delay 4s -> to generate unique imgs from the img gallery api
+    userGenerator();
+    records++;
+    if (records > 100) {
+      clearInterval();
+      res.send('Finished');
+    }
+  }, 4000);
+});
 
 // Below funciton used to post MongoDB data to AWS S3
 // app.post('/aws', (req, res) => {
