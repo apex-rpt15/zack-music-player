@@ -1,0 +1,117 @@
+.speaker {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+  top: 11.1px;
+}
+
+.space {
+  width: 10px;
+}
+
+.square {
+  position: relative;
+  top: 1.5px;
+  background: rgb(40, 40, 40);
+  height: 2.5px;
+  width: 2.5px;
+}
+
+.triangle {
+  position: relative;
+  top: -0.3px;
+  right: 2.2px;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-right: 3.5px solid rgb(40, 40, 40);
+  height: 0;
+  width: 0;
+}
+
+.outerCircle {
+  /* Create the circle */
+  width: 3.8px;
+  height: 3.8px;
+  border: 0.9px solid rgb(40, 40, 40);
+  border-radius: 50%;
+  position: relative;
+  right: 4.3px;
+  /* Halve the circle */
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  /* Rotate the circle */
+  transform: rotate(45deg);
+}
+
+.innerCircle {
+  composes: outerCircle;
+  top: -4.4px;
+  right: 3.1px;
+  width: 1.1px;
+  height: 1.1px;
+}
+
+.xL {
+  position: relative;
+  top: 1.1px;
+  right: 0.3px;
+  height: 3.3px;
+  width: 0.9px;
+  background: rgb(40, 40, 40);
+  transform: rotate(45deg);
+}
+
+.xR {
+  top: -2.2px;
+  composes: xL;
+  transform: rotate(135deg);
+}
+
+.popUp {
+  opacity: 0;
+  position: relative;
+  right: 2.8px;
+  top: -57px;
+  height: 50px;
+  width: 12px;
+  background: rgb(248, 248, 248);
+  border: 0.1px solid rgb(205, 205, 205);
+  border-bottom-color: rgb(248, 248, 248);
+}
+
+.lowTriangle {
+  opacity: 0;
+  position: relative;
+  left: 1.7px;
+  top: 49px;
+  width: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid rgb(248, 248, 248);
+}
+
+.lineUp {
+  position: relative;
+  top: 1px;
+  left: 5.7px;
+  height: 45px;
+  width: 1.2px;
+  background: rgb(198, 198, 198);
+}
+
+.orangeLine {
+  composes: lineUp;
+  top: -44px;
+  background: rgb(255, 102, 0);
+}
+
+.volBall {
+  position: relative;
+  top: -90px;
+  left: 4.4px;
+  height: 3.7px;
+  width: 3.7px;
+  border-radius: 50%;
+  background: rgb(255, 102, 0);
+}

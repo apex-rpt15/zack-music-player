@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 // var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -53,7 +54,8 @@ module.exports = {
     ]
   },
   // plugins: [
-  //   new ExtractTextPlugin('style.css')
+    // new webpack.EnvironmentPlugin(['URL'])
+    // new webpack.DefinePlugin({ 'process.env.URL': JSON.stringify(process.env.URL) })
   // ],
   mode: 'development',
   output: {

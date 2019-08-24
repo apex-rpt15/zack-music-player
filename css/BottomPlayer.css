@@ -1,12 +1,26 @@
-.background {
+.flex {
   zoom: 255%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: rgb(252, 252, 252);
   padding-bottom: 0;
   padding-top: 11px;
-  /* border: 1px solid black; */
+  position: relative;
+  top: -23.5px;
+  /* background: rgb(252, 252, 252);
+  border-top: 0.1px solid rgb(205, 205, 205); */
+}
+
+/* Floats on top of all other elements */
+.zIndex {
+  z-index: 500;
+}
+
+.background {
+  height: 50px;
+  width: 100%;
+  background: rgb(248, 248, 248);
+  border-top: 0.1px solid rgb(205, 205, 205);
 }
 
 .back {

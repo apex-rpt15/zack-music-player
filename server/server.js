@@ -6,6 +6,8 @@ var AWS = require('aws-sdk');
 var path = require('path');
 var request = require('request');
 
+require('dotenv').config();
+// console.log('process.env.URL', process.env.URL)
 app.use('/', express.static(path.resolve(__dirname, './../public/dist')));
 
 app.get('/user*/:username', (req, res) => {

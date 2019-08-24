@@ -33,7 +33,7 @@
 .songPosition {
   position: absolute;
   opacity: 0;
-  top: 15.1px;
+  top: 12.1px;
   height: 3.7px;
   width: 3.7px;
   border-radius: 50%;
@@ -63,6 +63,6 @@
   composes: beneathBar;
   position: absolute;
   top: 10.4px;
-  background: white;
+  background: rgb(248, 248, 248);
   height: 1px;
 }
