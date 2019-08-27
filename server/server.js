@@ -10,6 +10,12 @@ require('dotenv').config();
 // console.log('process.env.URL', process.env.URL)
 app.use('/', express.static(path.resolve(__dirname, './../public/dist')));
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+ });
+
 app.get('/user*/:username', (req, res) => {
   Users.find({ username: req.params.username }).limit(1)
     .then((results) => {
