@@ -63,8 +63,8 @@
 }
 
 .xR {
-  top: -2.2px;
   composes: xL;
+  top: -2.2px;
   transform: rotate(135deg);
 }
 
@@ -106,12 +106,22 @@
   background: rgb(255, 102, 0);
 }
 
+.orangeLineDown {
+  composes: orangeLine;
+  opacity: 0;
+}
+
 .volBall {
   position: relative;
-  top: -90px;
+  top: -90px; /* -90 to -47px */
   left: 4.4px;
   height: 3.7px;
   width: 3.7px;
   border-radius: 50%;
   background: rgb(255, 102, 0);
+}
+
+.volBallDown {
+  composes: volBall;
+  top: -47px;
 }

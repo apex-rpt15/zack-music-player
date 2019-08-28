@@ -1,0 +1,29 @@
+.art {
+  zoom: 4.8%;
+  position: relative;
+  top: -65px;
+  height: 260px;
+}
+
+.artist {
+  margin-top: -3px;
+  margin-left: 4px;
+  font-size: 28%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(151, 151, 151);
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+}
+
+.song {
+  composes: artist;
+  margin-top: -2.4px;
+  color: rgb(40, 40, 40);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
