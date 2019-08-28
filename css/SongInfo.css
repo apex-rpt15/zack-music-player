@@ -8,7 +8,7 @@
 .artist {
   margin-top: -3px;
   margin-left: 4px;
-  font-size: 28%;
+  font-size: 36%;
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(151, 151, 151);
 }
@@ -16,7 +16,7 @@
 .flex {
   display: flex;
   flex-direction: row;
-  width: 100px;
+  width: 90px;
 }
 
 .song {

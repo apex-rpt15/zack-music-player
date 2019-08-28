@@ -55,7 +55,7 @@
 }
 
 .space {
-  width: 10px
+  width: 11px
 }
 
 .forward {
@@ -82,12 +82,12 @@
 
 .shuffle {
   position: relative;
-  top: -30px;
-  zoom: 24%;
+  top: -33.5px;
+  zoom: 22%;
 }
 
 .loop {
   position: relative;
-  top: -62px;
-  zoom: 11%;
+  top: -75.5px;
+  zoom: 9.5%;
 }

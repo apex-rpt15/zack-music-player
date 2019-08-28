@@ -29,8 +29,8 @@ class BottomPlayer extends Component {
       nextUp: false
     };
   }
-  
-// ******** ACTIVATE when this API call contains a valid image link ********** //
+
+  // ******** ACTIVATE when this API call contains a valid image link ********** //
   // componentDidMount() {
   //   $.get({
   //     url: 'http://localhost:3001/tracks/AmigoKing/Little%20Bugs',
@@ -121,6 +121,7 @@ class BottomPlayer extends Component {
         {/* <div style={{ 'height': '200px' }}></div> temporary placeholder for upper elements */}
         <div className={styles.background}></div>
         <div className={styles.flex}>
+          <div style={{width: "137px"}}></div> {/* LEFT SPACER element */}
           <a href={noload}><div className={styles.bLine}></div></a>
           <a href={noload}><div className={styles.back}></div></a>
           <div className={styles.space}></div>
