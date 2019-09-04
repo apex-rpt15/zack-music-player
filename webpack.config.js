@@ -2,8 +2,10 @@ var path = require('path');
 var webpack = require('webpack');
 // var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
-  entry: {
+module.exports = function(env) {
+  console.log('ENV ********************', env.URL)
+ return {
+   entry: {
     app: path.resolve(__dirname, './client/index.js')
   },
   module: {
@@ -53,13 +55,14 @@ module.exports = {
       }
     ]
   },
-  // plugins: [
+  plugins: [
     // new webpack.EnvironmentPlugin(['URL'])
-    // new webpack.DefinePlugin({ 'process.env.URL': JSON.stringify(process.env.URL) })
-  // ],
-  mode: 'development',
+    new webpack.DefinePlugin({ 'process.env': {URL: JSON.stringify(env.URL) }})
+  ],
+  mode: 'production',//'development',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './public/dist')
   }
+}
 }

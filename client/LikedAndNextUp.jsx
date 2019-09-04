@@ -10,15 +10,15 @@ var LikedAndNextUp = ({ liked, clickLike, nextUp, clickNextUp }) => (
     <a href="javascript:void(0)" onClick={clickLike}>
       {
         liked
-          ? <img className={styles.heart} src={`http://localhost:3004/${heartOrange}`} alt="Like"></img>
-          : <img className={styles.heart} src={`http://localhost:3004/${heartBlack}`} alt="Like"></img>
+          ? <img className={styles.heart} src={`${process.env.URL}/${heartOrange}`} alt="Like"></img>
+          : <img className={styles.heart} src={`${process.env.URL}/${heartBlack}`} alt="Like"></img>
       }
     </a>
     <a href="javascript:void(0)" onClick={clickNextUp}>
       {
         nextUp
-          ? <img className={styles.nextUp} src={`http://localhost:3004/${nextOrange}`} alt="NextUp"></img>
-          : <img className={styles.nextUp} src={`http://localhost:3004/${nextBlack}`} alt="NextUp"></img>
+          ? <img className={styles.nextUp} src={`${process.env.URL}/${nextOrange}`} alt="NextUp"></img>
+          : <img className={styles.nextUp} src={`${process.env.URL}/${nextBlack}`} alt="NextUp"></img>
       }
     </a>
   </div>

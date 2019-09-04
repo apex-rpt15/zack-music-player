@@ -7,7 +7,7 @@ var path = require('path');
 var request = require('request');
 
 require('dotenv').config();
-// console.log('process.env.URL', process.env.URL)
+console.log('process.env.URL', process.env.URL)
 app.use('/', express.static(path.resolve(__dirname, './../public/dist')));
 
 app.use(function(req, res, next) {

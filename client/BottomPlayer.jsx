@@ -116,6 +116,8 @@ class BottomPlayer extends Component {
 
   render() {
     var noload = 'javascript:void(0)';
+//  var local = 'http://localhost:3004';
+//  var EC2 = 'http://ec2-13-57-29-242.us-west-1.compute.amazonaws.com';
     return (
       <div className={styles.zIndex}>
         {/* <div style={{ 'height': '200px' }}></div> temporary placeholder for upper elements */}
@@ -140,16 +142,16 @@ class BottomPlayer extends Component {
           <div className={styles.space}></div>
           {
             this.state.shuffle
-              ? <a href={noload} onClick={this.clickShuffle.bind(this)}><img src={`http://localhost:3004/${shuffleOn}`} alt="ShuffleOn" className={styles.shuffle}></img></a>
-              : <a href={noload} onClick={this.clickShuffle.bind(this)}><img src={`http://localhost:3004/${shuffle}`} alt="ShuffleOff" className={styles.shuffle}></img></a>
+              ? <a href={noload} onClick={this.clickShuffle.bind(this)}><img src={`${process.env.URL}/${shuffleOn}`} alt="ShuffleOn" className={styles.shuffle}></img></a>
+              : <a href={noload} onClick={this.clickShuffle.bind(this)}><img src={`${process.env.URL}/${shuffle}`} alt="ShuffleOff" className={styles.shuffle}></img></a>
           }
           <div className={styles.space}></div>
           {
             this.state.loop
               ? (this.state.loop === 1
-                ? <a href={noload} onClick={this.clickLoop.bind(this)}><img src={`http://localhost:3004/${loop1On}`} alt="Loop1On" className={styles.loop}></img></a>
-                : <a href={noload} onClick={this.clickLoop.bind(this)}><img src={`http://localhost:3004/${loopOn}`} alt="LoopOn" className={styles.loop}></img></a>)
-              : <a href={noload} onClick={this.clickLoop.bind(this)}><img src={`http://localhost:3004/${loop}`} alt="LoopOff" className={styles.loop}></img></a>
+                ? <a href={noload} onClick={this.clickLoop.bind(this)}><img src={`${process.env.URL}/${loop1On}`} alt="Loop1On" className={styles.loop}></img></a>
+                : <a href={noload} onClick={this.clickLoop.bind(this)}><img src={`${process.env.URL}/${loopOn}`} alt="LoopOn" className={styles.loop}></img></a>)
+              : <a href={noload} onClick={this.clickLoop.bind(this)}><img src={`${process.env.URL}/${loop}`} alt="LoopOff" className={styles.loop}></img></a>
           }
           <div className={styles.space}></div>
           <div className={styles.space}></div>
