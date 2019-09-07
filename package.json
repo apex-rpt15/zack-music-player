@@ -16,6 +16,8 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "start:prod": "node server/server.js",
+    "start:seed": "node server/server.js && curl -X POST http://ec2-13-57-29-242.us-west-1.compute.amazonaws.com/users",
+    "start:seed2": "curl --max-time 1.0 -X POST http://ec2-13-57-29-242.us-west-1.compute.amazonaws.com/users && node server/server.js",
     "test": "jest --coverage",
     "generate": "curl -X POST http://127.0.0.1:3004/users",
     "build": "webpack -d --env.URL=http://localhost:3004 --watch",

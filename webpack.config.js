@@ -56,7 +56,6 @@ module.exports = function(env) {
     ]
   },
   plugins: [
-    // new webpack.EnvironmentPlugin(['URL'])
     new webpack.DefinePlugin({ 'process.env': {URL: JSON.stringify(env.URL) }})
   ],
   mode: 'production',//'development',

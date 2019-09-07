@@ -7,7 +7,7 @@ var path = require('path');
 var request = require('request');
 
 require('dotenv').config();
-console.log('process.env.URL', process.env.URL)
+// console.log('process.env.URL', process.env.URL)
 app.use('/', express.static(path.resolve(__dirname, './../public/dist')));
 
 app.use(function(req, res, next) {
@@ -67,13 +67,14 @@ app.get('/related', (req, res) => { // from Abraham's data
 app.post('/users', (req, res) => {
   var records = 0;
   setInterval(() => { // had to delay 4s -> to generate unique imgs from the img gallery api
-    userGenerator();
+    userGenerator(records);
     records++;
-    if (records > 100) {
+    if (records >= 100) {
       clearInterval();
-      res.send('Finished');
+      // res.send('Finished');
     }
   }, 4000);
+  res.send('Started'); // this will allow the next command to execute while this server handles the db seed in the background
 });
 
 // Below funciton used to post MongoDB data to AWS S3

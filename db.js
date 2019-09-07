@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1/soundcloudusers', {useNewUrlParser: true})
+// mongoose.connect('mongodb://127.0.0.1/soundcloudusers', {useNewUrlParser: true})
+mongoose.connect('mongodb://database/soundcloudusers', {useNewUrlParser: true}) // modified for Docker-compose
   .then(() => {console.log('Connected to MongoDB')})
   .catch((err) => {console.log('MongoDB connection error', err)});
 
