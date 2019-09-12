@@ -21,7 +21,7 @@
 
 .song {
   composes: artist;
-  margin-top: -3.5px;
+  margin-top: -3.1px;
   color: rgb(40, 40, 40);
   overflow: hidden;
   text-overflow: ellipsis;
