@@ -6,6 +6,7 @@ var TimeBar = ({ percent, changePercent }) => {
 
   return (
     <div className={styles.hover}>
+      <div style={{'height': '1.3px'}}></div> {/* for styling */}
       <input type="range" min="0" max="100" value={percent} className={styles.range} onChange={changePercent}></input>
       <div className={styles.orangeBar} style={{ 'width': orangeBarPx }}></div>
       {/* <a href="javascript:void(0)"></a> */}
