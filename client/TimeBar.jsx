@@ -1,15 +1,14 @@
 import React from 'react';
 import styles from '../css/SongClock.css';
 
-var TimeBar = ({percent, changePercent}) => {
-  var barPx = `${(percent * 2)}px`
-  var whitePx = `${(percent * 2 - 2)}px`
+var TimeBar = ({ percent, changePercent }) => {
+  var orangeBarPx = `${(percent * 1.75)}px`;
+
   return (
-    <div className={styles.hover} onClick={changePercent}>
-      <div className={styles.beneathBar}></div>
-      <div className={styles.whiteBar} style={{'width': barPx}}></div>
-      <div className={styles.songPosition} style={{'marginLeft': whitePx}}></div>
-      <div className={styles.topBar} style={{'width': barPx}}></div>
+    <div className={styles.hover}>
+      <input type="range" min="0" max="100" value={percent} className={styles.range} onChange={changePercent}></input>
+      <div className={styles.orangeBar} style={{ 'width': orangeBarPx }}></div>
+      {/* <a href="javascript:void(0)"></a> */}
     </div>
   );
 };

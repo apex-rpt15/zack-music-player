@@ -5,9 +5,8 @@ var userGenerator = require('./userGenerator.js');
 var AWS = require('aws-sdk');
 var path = require('path');
 var request = require('request');
-
 require('dotenv').config();
-// console.log('process.env.URL', process.env.URL)
+
 app.use('/', express.static(path.resolve(__dirname, './../public/dist')));
 
 app.use(function(req, res, next) {
@@ -40,28 +39,17 @@ app.get('/*', (req, res) => {
   res.send(string);
 });
 
-app.get('/mainTrack', (req, res) => { // from Alastair's data
-  request('http://localhost:3001/tracks/:artist/:track', (err, result) => {
-    var data = {
-      artist: req.params.artist,
-      track: req.params.track,
-      songfile: result.cdn_url,
-      image: result.FILL_ME_IN        // TODO
-    };
-    res.send(data);
-  });
-});
-
-app.get('/related', (req, res) => { // from Abraham's data
-  request('http://localhost:3003/related-tracks', (err, result) => {
-    var data = {
-      related1: {}, // songName // (songImg) TODO
-      related2: {}, // songName // (songImg) TODO
-      related3: {}  // songName // (songImg) TODO
-    };
-    res.send(data);
-  });
-});
+// app.get('/mainTrack', (req, res) => { // from Alastair's data
+//   request('http://localhost:3001/tracks/:artist/:track', (err, result) => {
+//     var data = {
+//       artist: req.params.artist,
+//       track: req.params.track,
+//       songfile: result.cdn_url,
+//       image: result.art_url
+//     };
+//     res.send(data);
+//   });
+// });
 
 // Below function used to populate 100 records with one Post Request to /users
 app.post('/users', (req, res) => {
@@ -104,7 +92,5 @@ app.post('/users', (req, res) => {
 //     res.end();
 //   });
 // });
-
-// .env = put the port number and sensitive info and .gitignore
 
 app.listen(3004, () => { console.log('listening on 3004') });

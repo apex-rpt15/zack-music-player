@@ -1,9 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
-// var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = function(env) {
-  console.log('ENV ********************', env.URL)
+  // console.log('ENV ********************', env.URL)
  return {
    entry: {
     app: path.resolve(__dirname, './client/index.js')
@@ -37,19 +36,6 @@ module.exports = function(env) {
               sourceMap: true,
               modules: true
             }
-
-            //   loader: ExtractTextPlugin.extract(
-            //     'style-loader',
-            //     combineLoaders([
-            //       {
-            //         loader: 'css-loader',
-            //         query: {
-            //           modules: true,
-            //           localIdentName: '[name]__[local]___[hash:base64:5]'
-            //         }
-            //       }
-            //     ])
-            // )
           }
         ]
       }

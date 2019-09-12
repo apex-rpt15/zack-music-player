@@ -41,29 +41,72 @@
   background: rgb(255, 102, 0);
 }
 
-.beneathBar {
+.range {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  outline: none;
   position: relative;
-  top: 2.6px;
   height: 0.3px;
-  width: 175px;
   background: rgb(200, 200, 200);
+  top: -11px;
+  width: 175px;
 }
 
-.hover:hover > .songPosition {
+.range::-webkit-slider-thumb {
+  opacity: 0;
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  height: 3.7px;
+  width: 3.7px;
+  border-radius: 50%;
+  background: rgb(255, 102, 0);
+  cursor: pointer; /* Cursor on hover */
+}
+
+.range::-moz-range-thumb {
+  opacity: 0;
+  height: 3.7px;
+  width: 3.7px;
+  border-radius: 50%;
+  background: rgb(255, 102, 0);
+  cursor: pointer; /* Cursor on hover */
+}
+
+.hover:hover > .range::-webkit-slider-thumb {
+  opacity: 1;
+  transition: all 100ms ease-in-out;
+}
+.hover:hover > .range::-moz-range-thumb {
   opacity: 1;
   transition: all 100ms ease-in-out;
 }
 
-.topBar {
-  composes: beneathBar;
-  top: 2.3px;
+.orangeBar {
+  position: relative;
+  top: -15.4px;
+  left: 2.1px;
+  height: 0.3px;
   background: rgb(255, 102, 0);
 }
 
-.whiteBar {
+/* .beneathBar {
+  position: relative;
+  top: 2.6px;
+  height: 0.3px;
+  background: rgb(200, 200, 200);
+  width: 175px;
+} */
+
+/* .orangeBar {
+  composes: beneathBar;
+  top: 2.3px;
+  background: rgb(255, 102, 0);
+} */
+
+/* .whiteBar {
   composes: beneathBar;
   position: absolute;
   top: 10.4px;
   background: rgb(248, 248, 248);
   height: 1px;
-}
+} */
