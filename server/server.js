@@ -5,11 +5,17 @@ var userGenerator = require('./userGenerator.js');
 var AWS = require('aws-sdk');
 var path = require('path');
 var request = require('request');
-var compression = require('compression')
+var expressStaticGzip = require('express-static-gzip');
 require('dotenv').config();
+// var compression = require('compression');
+// app.use(compression());
 
-app.use('/', express.static(path.resolve(__dirname, './../public/dist')));
-app.use(compression());
+// app.use('/', express.static('public/dist'));
+
+app.use('/', expressStaticGzip('public/dist', {
+  enableBrotli: true,
+  orderPreference: ['br', 'gz']
+}));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
