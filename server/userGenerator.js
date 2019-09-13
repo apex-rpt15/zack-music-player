@@ -74,7 +74,7 @@ module.exports = (recordNum) => {
                               });
 
   // this request generates the user picture from unsplash API
-  request('https://source.unsplash.com/collection/895539/240x240', (err, result) => { // collection of faces
+  request('https://source.unsplash.com/collection/895539/40x40', (err, result) => { // collection of faces
     if (err) {
       console.log(err)
     } else {
