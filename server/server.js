@@ -7,8 +7,6 @@ var path = require('path');
 var request = require('request');
 var expressStaticGzip = require('express-static-gzip');
 require('dotenv').config();
-// var compression = require('compression');
-// app.use(compression());
 
 // app.use('/', express.static('public/dist'));
 

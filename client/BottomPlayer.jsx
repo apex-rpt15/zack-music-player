@@ -27,8 +27,8 @@ class BottomPlayer extends Component {
       songName: 'Little Bugs (with some extra text to test overflow)',
       songArtist: 'AmigoKing',
       liked: false,
-      nextUp: false,
-      song: new Audio('https://www.bensound.org/bensound-music/bensound-summer.mp3')
+      nextUp: false //,
+      // song: new Audio('https://www.bensound.org/bensound-music/bensound-summer.mp3')
       // song: new Audio('https://apex15-fec-cdn.s3.us-east-2.amazonaws.com/Little+Bugs.mp3')
     };
   }
@@ -64,7 +64,7 @@ class BottomPlayer extends Component {
     });
     // setting the inital value for the song length = (this.state.endTime)
     setTimeout(() => {
-      var duration = this.state.song.duration;
+      var duration = document.getElementById('song').duration;
       var clock = this.calculateClock(duration);
       this.setState({
         endTime: clock
@@ -73,14 +73,15 @@ class BottomPlayer extends Component {
   }
 
   clickPlay() {
+    var song = document.getElementById('song');
     if (this.state.play) {
-      this.state.song.pause();
+      song.pause();
     } else {
-      this.state.song.play();
+      song.play();
       var clock = setInterval(() => {
-        var current = this.calculateClock(this.state.song.currentTime)
+        var current = this.calculateClock(song.currentTime)
         this.calculatePlayBar();
-        if (this.state.song.ended) {
+        if (song.ended) {
           current = this.state.endTime
         }
         this.setState({
@@ -121,11 +122,11 @@ class BottomPlayer extends Component {
 
   changePercent(e) {
     // console.log(e.target.value, e.pageX, e.target.getBoundingClientRect(), e.target.getBoundingClientRect().width)
-    var duration = this.state.song.duration;
+    var duration = document.getElementById('song').duration;
     var sec = e.target.value * duration / 100;
     var current = this.calculateClock(sec);
 
-    this.state.song.currentTime = sec;
+    document.getElementById('song').currentTime = sec;
     this.setState({
       currentTime: current,
       percentage: e.target.value
@@ -162,9 +163,9 @@ class BottomPlayer extends Component {
 
   clickVol() {
     if (this.state.volumeOn) {
-      this.state.song.volume = '0.0';
+      document.getElementById('song').volume = '0.0';
     } else {
-      this.state.song.volume = '1.0';
+      document.getElementById('song').volume = '1.0';
     }
     this.setState({
       volumeOn: !this.state.volumeOn
@@ -174,10 +175,10 @@ class BottomPlayer extends Component {
   clickLoop() {
     if (this.state.loop === 2) {
       var loop = 0;
-      this.state.song.loop = false;
+      document.getElementById('song').loop = false;
     } else {
       var loop = this.state.loop + 1;
-      this.state.song.loop = true;
+      document.getElementById('song').loop = true;
     }
     this.setState({
       loop: loop
@@ -185,14 +186,14 @@ class BottomPlayer extends Component {
   }
 
   clickRWD() {
-    this.state.song.currentTime = 0;
+    document.getElementById('song').currentTime = 0;
     this.setState({
       currentTime: '0:00',
       percentage: 0
     });
   }
   clickFWD() {
-    this.state.song.currentTime = this.state.song.duration;
+    document.getElementById('song').currentTime = document.getElementById('song').duration;
     this.setState({
       fwd: true,
       currentTime: this.state.endTime,
