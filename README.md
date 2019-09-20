@@ -23,8 +23,8 @@ This component is the mini-music player that occupies the bottom of the screen.
 
 > This component is currently set up to be run with the zack-proxy project through Amazon's EC2.
 
-> To run independently on localhost:3004: 
-	/public/dist/index.html --> uncomment line 8 containing the <audio> element
+> To run independently on localhost:3004:
+	/public/dist/index.html --> uncomment line 8 containing the audio element
       Terminal: $ npm start
                 $ npm run build
 
@@ -46,4 +46,6 @@ From within the root directory:
 $ npm install -g webpack
 $ npm install
 ```
+## Author
 
+- Zack Miller
