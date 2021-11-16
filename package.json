@@ -24,7 +24,7 @@
     "build:prod": "webpack -p --env.URL=http://ec2-13-57-29-242.us-west-1.compute.amazonaws.com --watch"
   },
   "dependencies": {
-    "aws-sdk": "^2.506.0",
+    "aws-sdk": "^2.814.0",
     "brotli-webpack-plugin": "^1.1.0",
     "compression-webpack-plugin": "^3.0.0",
     "dotenv": "^8.1.0",
